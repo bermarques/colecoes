@@ -4,12 +4,10 @@ const CharacterCard = ({ charArr }) => {
   return (
     <Container>
       {charArr.map((char, idx) => (
-        <div>
-          <Card key={idx}>
-            <img src={char.image} alt={"Imagem do perseonagem " + char.name} />
-            <p>{char.name}</p>
-          </Card>
-        </div>
+        <Card key={idx}>
+          <img src={char.image} alt={"Imagem do personagem " + char.name} />
+          <p>{char.name}</p>
+        </Card>
       ))}
     </Container>
   );
