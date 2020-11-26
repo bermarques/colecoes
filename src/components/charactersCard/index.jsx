@@ -3,13 +3,10 @@ import { Body } from "./style";
 
 const { Meta } = Card;
 
-const CharactersCard = ({ arr, id }) => {
+const CharactersCard = ({ arr }) => {
   return (
     <Body>
       {arr.map((card, idx) => {
-        const brokenUrl = card.url.split("/");
-        const id = brokenUrl[brokenUrl.length - 2];
-
         return (
           <Card
             key={idx}
