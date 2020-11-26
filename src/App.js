@@ -8,6 +8,7 @@ import { useState } from "react";
 
 const App = () => {
   const [favorites, setFavorites] = useState([]);
+  const [pokeFav, setPokeFavs] = useState([]);
 
   return (
     <Layout>
@@ -19,7 +20,7 @@ const App = () => {
           <FavoriteCharacters fav={favorites} />
         </Route>
         <Route exact path="/pokemon">
-          <Pokemons />
+          <Pokemons fav={pokeFav} setFav={setPokeFavs} />
         </Route>
       </Switch>
     </Layout>

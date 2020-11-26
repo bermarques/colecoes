@@ -3,7 +3,7 @@ import axios from "axios";
 import Head from "../../components/header";
 import PokeCards from "./cards";
 
-const Pokemons = () => {
+const Pokemons = ({ fav, setFav }) => {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const Pokemons = () => {
   return (
     <>
       <Head />
-      <PokeCards characters={characters} />
+      <PokeCards characters={characters} fav={fav} setFav={setFav} />
     </>
   );
 };

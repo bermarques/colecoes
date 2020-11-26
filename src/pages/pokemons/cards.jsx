@@ -3,12 +3,19 @@ import { Body } from "../../components/charactersCard/style";
 import { motion } from "framer-motion";
 const { Meta } = Card;
 
-const PokeCards = ({ characters }) => {
+const PokeCards = ({ characters, fav, setFav }) => {
+  const getCard = (evt) => {
+    const card = evt.currentTarget.children[0].children[0];
+    setFav([...fav, { name: card.alt, image: card.src }]);
+    console.log(fav);
+  };
+
   return (
     <Body>
       {characters.map(({ name }, index) => (
         <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
           <Card
+            onClick={getCard}
             key={index}
             hoverable
             style={{ width: 240 }}
