@@ -5,7 +5,7 @@ import Head from "../../components/header";
 import CharactersCard from "../../components/charactersCard";
 import { Button } from "antd";
 
-const RickAndMorty = () => {
+const RickAndMorty = ({ fav, setFav }) => {
   const [characters, setCharacters] = useState([]);
   const [url, setUrl] = useState(
     "https://rickandmortyapi.com/api/character/?page=1"
@@ -27,7 +27,7 @@ const RickAndMorty = () => {
           <Button onClick={() => setUrl(statusAPI.prev)}>Anterior</Button>
           <Button onClick={() => setUrl(statusAPI.next)}>Próximo</Button>
         </div>
-        <CharactersCard arr={characters} />
+        <CharactersCard arr={characters} fav={fav} setFav={setFav} />
       </div>
     </>
   );
