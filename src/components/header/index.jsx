@@ -5,6 +5,7 @@ import { faDragon } from "@fortawesome/free-solid-svg-icons";
 import { Layout, Menu } from "antd";
 
 const { Sider } = Layout;
+const { SubMenu } = Menu;
 
 const Head = () => {
   const location = useLocation();
@@ -15,23 +16,53 @@ const Head = () => {
       <Menu
         style={{ width: 200, borderRight: 0 }}
         defaultSelectedKeys={location.pathname}
+        mode="vertical"
       >
-        <Menu.Item
-          key="1"
-          onClick={() => {
-            history.push("/");
-          }}
+        <SubMenu
+          title={" Rick And Morty"}
+          key="sub1"
+          icon={<FontAwesomeIcon icon={faReact} />}
         >
-          <FontAwesomeIcon icon={faReact} /> &nbsp; Rick And Morty
-        </Menu.Item>
-        <Menu.Item
+          <Menu.Item
+            key="1"
+            onClick={() => {
+              history.push("/");
+            }}
+          >
+            Lista de personagens
+          </Menu.Item>
+          <Menu.Item
+            key="2"
+            onClick={() => {
+              history.push("/favoriteram");
+            }}
+          >
+            Favoritos
+          </Menu.Item>
+        </SubMenu>
+
+        <SubMenu
           key="pokemon"
-          onClick={() => {
-            history.push("/pokemon");
-          }}
+          icon={<FontAwesomeIcon icon={faDragon} />}
+          title={" Pokémon"}
         >
-          <FontAwesomeIcon icon={faDragon} /> &nbsp; Pokémon
-        </Menu.Item>
+          <Menu.Item
+            key="3"
+            onClick={() => {
+              history.push("/pokemon/");
+            }}
+          >
+            Lista de Pokémons
+          </Menu.Item>
+          <Menu.Item
+            key="4"
+            onClick={() => {
+              history.push("/pokemon/");
+            }}
+          >
+            Favoritos
+          </Menu.Item>
+        </SubMenu>
       </Menu>
     </Sider>
   );
