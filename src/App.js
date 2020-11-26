@@ -2,6 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import RickAndMorty from "./pages/rickandmorty";
 import Pokemons from "./pages/pokemons";
 import FavoriteCharacters from "./pages/rickandmorty/favorites";
+import FavoritePokemons from "./pages/pokemons/favorites";
 import "antd/dist/antd.css";
 import { Layout } from "antd";
 import { useState } from "react";
@@ -21,6 +22,9 @@ const App = () => {
         </Route>
         <Route exact path="/pokemon">
           <Pokemons fav={pokeFav} setFav={setPokeFavs} />
+        </Route>
+        <Route exact path="/favoritepokemons">
+          <FavoritePokemons fav={pokeFav} />
         </Route>
       </Switch>
     </Layout>

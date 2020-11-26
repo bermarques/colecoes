@@ -57,7 +57,7 @@ const Head = () => {
           <Menu.Item
             key="4"
             onClick={() => {
-              history.push("/pokemon/");
+              history.push("/favoritepokemons/");
             }}
           >
             Favoritos
