@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 import Head from "../../components/header";
-import CharactersCard from "../../components/charactersCard";
+
+import { Card } from "antd";
+import { Body } from "../../components/charactersCard/style";
+import { motion } from "framer-motion";
+const { Meta } = Card;
 
 const Pokemons = () => {
   const [characters, setCharacters] = useState([]);
@@ -16,10 +19,28 @@ const Pokemons = () => {
   return (
     <>
       <Head />
-      <div>
-        <div style={{ display: "flex", justifyContent: "space-around" }}></div>
-        <CharactersCard arr={characters} />
-      </div>
+
+      <Body>
+        {characters.map(({ name }, index) => (
+          <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+            <Card
+              key={index}
+              hoverable
+              style={{ width: 240 }}
+              cover={
+                <img
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+                    index + 1
+                  }.png`}
+                  alt={name}
+                />
+              }
+            >
+              <Meta title={name} />
+            </Card>
+          </motion.button>
+        ))}
+      </Body>
     </>
   );
 };
