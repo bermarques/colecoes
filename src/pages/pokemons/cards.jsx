@@ -1,13 +1,13 @@
-import { Card } from "antd";
+import { Card, Button } from "antd";
 import { Body } from "../../components/charactersCard/style";
 import { motion } from "framer-motion";
 const { Meta } = Card;
 
-const PokeCards = ({ characters, fav, setFav }) => {
+const PokeCards = ({ characters, fav, setFav, favButton = true }) => {
   const getCard = (evt) => {
-    const card = evt.currentTarget.children[0].children[0];
+    const card =
+      evt.currentTarget.parentNode.parentNode.children[0].children[0];
     setFav([...fav, { name: card.alt, image: card.src }]);
-    console.log(fav);
   };
 
   return (
@@ -15,7 +15,6 @@ const PokeCards = ({ characters, fav, setFav }) => {
       {characters.map(({ name }, index) => (
         <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
           <Card
-            onClick={getCard}
             key={index}
             hoverable
             style={{ width: 240 }}
@@ -29,6 +28,9 @@ const PokeCards = ({ characters, fav, setFav }) => {
             }
           >
             <Meta title={name} />
+            {favButton && (
+              <Button onClick={getCard}>Adicionar aos favoritos </Button>
+            )}
           </Card>
         </motion.button>
       ))}

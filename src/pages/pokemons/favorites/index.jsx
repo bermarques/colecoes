@@ -5,7 +5,7 @@ const FavoritePokemons = ({ fav }) => {
   return (
     <>
       <Head />
-      <PokeCards characters={fav} />
+      <PokeCards characters={fav} favButton={false} />
     </>
   );
 };

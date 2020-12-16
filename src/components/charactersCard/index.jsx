@@ -1,12 +1,13 @@
-import { Card } from "antd";
+import { Card, Button } from "antd";
 import { Body } from "./style";
 import { motion } from "framer-motion";
 
 const { Meta } = Card;
 
-const CharactersCard = ({ arr, fav, setFav }) => {
+const CharactersCard = ({ arr, fav, setFav, favButton = true }) => {
   const getCard = (evt) => {
-    const card = evt.currentTarget.children[0].children[0];
+    const card =
+      evt.currentTarget.parentNode.parentNode.children[0].children[0];
     setFav([...fav, { name: card.alt, image: card.src }]);
   };
 
@@ -16,13 +17,15 @@ const CharactersCard = ({ arr, fav, setFav }) => {
         return (
           <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
             <Card
-              onClick={getCard}
               key={idx}
               hoverable
               style={{ width: 240 }}
               cover={<img alt={card.name} src={card.image} />}
             >
               <Meta title={card.name} />
+              {favButton && (
+                <Button onClick={getCard}>Adicionar aos favoritos </Button>
+              )}
             </Card>
           </motion.button>
         );

@@ -6,7 +6,7 @@ const FavoriteCharacters = ({ fav }) => {
     <>
       <Head />
       <div>
-        <CharactersCard arr={fav} />
+        <CharactersCard arr={fav} favButton={false} />
       </div>
     </>
   );
